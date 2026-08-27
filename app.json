@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "FoodPlease Repartidor",
+    "slug": "foodplease-repartidor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "foodplease",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "splash": {
+      "backgroundColor": "#E63946",
+      "resizeMode": "contain"
+    },
+    "android": {
+      "package": "com.foodplease.repartidor",
+      "permissions": ["CAMERA"]
+    },
+    "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "FoodPlease Repartidor usa la cámara para adjuntar la foto de comprobante al confirmar una entrega."
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/hero-bienvenida.png"
+    },
+    "experiments": {
+      "baseUrl": "/APTC106_S9_Grupo1"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "FoodPlease Repartidor usa la cámara para adjuntar la foto de comprobante al confirmar una entrega."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1f348942-0064-42cf-9fa0-7efd34b295a7"
+      }
+    },
+    "owner": "isavera"
+  }
+}
