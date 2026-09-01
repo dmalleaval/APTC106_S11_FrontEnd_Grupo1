@@ -23,7 +23,7 @@ function formatCLP(n) {
  * queries, no un setTimeout artificial.
  */
 export default function PedidosDisponiblesScreen({ navigation }) {
-  const { repartidor } = useAuth();
+  const { repartidor, setRepartidor } = useAuth();
   const { available, porRetirar, enReparto, loading } = useOrders();
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [setEnLinea] = useMutation(SET_EN_LINEA);
@@ -33,7 +33,8 @@ export default function PedidosDisponiblesScreen({ navigation }) {
 
   const handleToggleOnline = async () => {
     const next = !online;
-    await setEnLinea({ variables: { enLinea: next } });
+    const { data } = await setEnLinea({ variables: { enLinea: next } });
+    setRepartidor((prev) => (prev ? { ...prev, enLinea: data.setEnLinea.enLinea } : prev));
     if (next) {
       setShowSnackbar(true);
       setTimeout(() => setShowSnackbar(false), 2500);
