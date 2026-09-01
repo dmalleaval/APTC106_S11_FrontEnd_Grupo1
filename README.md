@@ -1,4 +1,4 @@
-# APTC106_S9_Grupo1
+# APTC106_S11_Grupo1_frontend
 
 Repositorio correspondiente a sección APTC106 Grupo 1 — Aplicativo móvil FoodPlease
 
@@ -12,23 +12,25 @@ Repositorio correspondiente a sección APTC106 Grupo 1 — Aplicativo móvil Foo
 
 Aplicación móvil para el perfil de repartidor, donde podrá recibir pedidos, navegar vía GPS, actualizar estados de pedidos y confirmar entregas. Adicionalmente podrá visualizar los pedidos realizados, en curso y los montos asociados.
 
-Construida con **React Native + Expo** (JavaScript) y **React Navigation**. Desde la Semana 11, la app dejó de usar datos hardcodeados: consume una API GraphQL propia (ver [`foodplease-backend`](../foodplease-backend)) vía **Apollo Client**, con login real (JWT) y persistencia en MongoDB.
+Construida con **React Native + Expo** (JavaScript) y **React Navigation**. Desde la Semana 11, la app dejó de usar datos hardcodeados: consume una API GraphQL propia (repo [`APTC106_S11_Grupo1_backend`](https://github.com/Isa-V/APTC106_S11_Grupo1_backend)) vía **Apollo Client**, con login real (JWT) y persistencia en **MongoDB Atlas**.
+
+El backend corre desplegado en **Azure App Service**; la base de datos vive aparte, en **MongoDB Atlas** (no está alojada en Azure — ver el README del backend para el detalle de esa separación).
 
 ### Conectar con el backend
 
-1. Levantar el backend (`foodplease-backend/`, ver su README) — por defecto en `http://localhost:4000/graphql`.
+1. Levantar el backend ([`APTC106_S11_Grupo1_backend`](https://github.com/Isa-V/APTC106_S11_Grupo1_backend), ver su README) — por defecto en `http://localhost:4000/graphql`.
 2. `npm install` acá.
 3. `npm run seed` en el backend para tener un usuario de prueba
    (`pedro.ortega@ejemplo.com` / `12345678`) y pedidos de ejemplo.
 4. `npx expo start` — por defecto ya apunta a `http://localhost:4000/graphql`
    (`src/api/client.js`). Para apuntar a producción, copiar `.env.example` a
-   `.env` con `EXPO_PUBLIC_API_URL`.
+   `.env` con `EXPO_PUBLIC_API_URL` (ya configurado con la URL de Azure en este repo).
 
 ### GitHub Pages
 
-**https://dmalleaval.github.io/APTC106_S9_Grupo1/**
+**https://isa-v.github.io/APTC106_S11_Grupo1_frontend/**
 
-Se abre directo en el navegador, sin instalar nada. Está generado a partir del build estático de la rama `main`, publicado en la rama `gh-pages`.
+Se abre directo en el navegador, sin instalar nada. Está generado a partir del build estático (`expo export --platform web`), publicado en la rama `gh-pages`. Esta versión publicada ya está conectada al backend real desplegado en Azure — el login y los datos son reales, no simulados.
 
 > Sirve para una revisión rápida de las pantallas y la navegación. No reemplaza probar el APK en un celular real: en el navegador no hay acceso a la cámara ni al GPS del dispositivo.
 
@@ -45,11 +47,9 @@ Esto es lo que demuestra que la app es **distribuible de manera directa, fuera d
 
 ### Descarga directa
 
-**https://expo.dev/accounts/isavera/projects/foodplease-repartidor/builds/c010efc6-7715-4649-918c-3c4fa36a94c8**
+> **Pendiente de regenerar:** el build anterior (24-08-2026) es previo a la integración con el backend real (Apollo Client + API en Azure) y quedó desactualizado. Generar uno nuevo con los pasos de abajo antes de distribuirlo.
 
-Abre ese link desde un celular Android (o escanea el QR que muestra esa página) para instalar la app ya compilada, sin correr ningún comando.
-
-> Generado el 24-08-2026. Los builds del plan gratuito de EAS quedan disponibles unos 30 días — vence aprox. el 23-09-2026. Si el link ya no funciona, seguir los pasos de abajo para generar uno nuevo (toma ~15 minutos).
+Una vez generado el nuevo build, este README se actualiza con el link directo. Mientras tanto, seguir los pasos de "Generar el APK" abajo (toma ~15 minutos).
 
 ### Generar el APK
 
