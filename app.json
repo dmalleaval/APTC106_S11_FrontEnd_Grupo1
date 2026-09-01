@@ -28,7 +28,7 @@
       "favicon": "./assets/images/hero-bienvenida.png"
     },
     "experiments": {
-      "baseUrl": "/APTC106_S9_Grupo1"
+      "baseUrl": "/APTC106_S11_Grupo1_frontend"
     },
     "plugins": [
       [
